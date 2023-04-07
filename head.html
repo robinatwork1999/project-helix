@@ -1,9 +1,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <script>
-    console.log(document)
+    setTimeout(()=>{
+        console.log(document)
     var img = window.document.body.querySelector('img');
     console.log(img);
     img.removeAttribute('loading');
+    },10)
 </script>
 <script defer="defer" src="/scripts/lib-franklin.js" type="module"></script>
 <script defer="defer" src="/scripts/scripts.js" type="module"></script>
