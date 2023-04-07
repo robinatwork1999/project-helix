@@ -1,1 +1,131 @@
-!function(){var e={8017:function(e){function t(e){return Promise.resolve().then((function(){var t=new Error("Cannot find module '"+e+"'");throw t.code="MODULE_NOT_FOUND",t}))}t.keys=function(){return[]},t.resolve=t,t.id=8017,e.exports=t}},t={};function n(o){var a=t[o];if(void 0!==a)return a.exports;var c=t[o]={exports:{}};return e[o](c,c.exports,n),c.exports}n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){"use strict";function e(t,n={}){e.defer=e.defer||[];const o=t=>{e[t]=e[t]||((...n)=>e.defer.push({fnname:t,args:n}))};e.drain=e.drain||((t,n)=>{e[t]=n,e.defer.filter((({fnname:e})=>t===e)).forEach((({fnname:t,args:n})=>e[t](...n)))}),e.on=(t,n)=>{e.cases[t]=n},o("observe"),o("cwv");try{if(window.hlx=window.hlx||{},!window.hlx.rum){const t="on"===new URLSearchParams(window.location.search).get("rum")?1:100,n=`${(e=>e.split("").reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)|0),0))(window.location.href)}-${(new Date).getTime()}-${Math.random().toString(16).substr(2,14)}`,o=Math.random(),a=o*t<1;window.hlx.rum={weight:t,id:n,random:o,isSelected:a,sampleRUM:e}}const{weight:o,id:a}=window.hlx.rum;if(window.hlx&&window.hlx.rum&&window.hlx.rum.isSelected){const c=(e=n)=>{const c=JSON.stringify({weight:o,id:a,referer:window.location.href,generation:window.hlx.RUM_GENERATION,checkpoint:t,...n}),s=`https://rum.hlx.page/.rum/${o}`;navigator.sendBeacon(s,c),console.debug(`ping:${t}`,e)};e.cases=e.cases||{cwv:()=>e.cwv(n)||!0,lazy:()=>{const e=document.createElement("script");return e.src="https://rum.hlx.page/.rum/@adobe/helix-rum-enhancer@^1/src/index.js",document.head.appendChild(e),!0}},c(n),e.cases[t]&&e.cases[t]()}}catch(e){}}function t(e,t){if(document.querySelector(`head > link[href="${e}"]`))"function"==typeof t&&t("noop");else{const n=document.createElement("link");n.setAttribute("rel","stylesheet"),n.setAttribute("href",e),"function"==typeof t&&(n.onload=e=>t(e.type),n.onerror=e=>t(e.type)),document.head.appendChild(n)}}function o(e){const t=e&&e.includes(":")?"property":"name";return[...document.head.querySelectorAll(`meta[${t}="${e}"]`)].map((e=>e.content)).join(", ")||""}function a(e){return"string"==typeof e?e.toLowerCase().replace(/[^0-9a-z]/gi,"-").replace(/-+/g,"-").replace(/^-|-$/g,""):""}function c(e){return a(e).replace(/-([a-z])/g,(e=>e[1].toUpperCase()))}const s={};function r(e){const t=e.classList[0];if(t){e.classList.add("block"),e.dataset.blockName=t,e.dataset.blockStatus="initialized";e.parentElement.classList.add(`${t}-wrapper`);const n=e.closest(".section");n&&n.classList.add(`${t}-container`)}}function i(e){e.querySelectorAll(":scope > div").forEach((e=>{const t=[];let n=!1;[...e.children].forEach((e=>{if("DIV"===e.tagName||!n){const o=document.createElement("div");t.push(o),n="DIV"!==e.tagName,n&&o.classList.add("default-content-wrapper")}t[t.length-1].append(e)})),t.forEach((t=>e.append(t))),e.classList.add("section"),e.dataset.sectionStatus="initialized",e.style.display="none";const o=e.querySelector("div.section-metadata");if(o){const t=function(e){const t={};return e.querySelectorAll(":scope > div").forEach((e=>{if(e.children){const n=[...e.children];if(n[1]){const o=n[1],c=a(n[0].textContent);let s="";if(o.querySelector("a")){const e=[...o.querySelectorAll("a")];s=1===e.length?e[0].href:e.map((e=>e.href))}else if(o.querySelector("img")){const e=[...o.querySelectorAll("img")];s=1===e.length?e[0].src:e.map((e=>e.src))}else if(o.querySelector("p")){const e=[...o.querySelectorAll("p")];s=1===e.length?e[0].textContent:e.map((e=>e.textContent))}else s=e.children[1].textContent;t[c]=s}}})),console.log(t),t}(o);Object.keys(t).forEach((n=>{if("style"===n){t.style.split(",").map((e=>a(e.trim()))).forEach((t=>e.classList.add(t)))}else e.dataset[c(n)]=t[n]})),o.parentNode.remove()}}))}function l(e){const t=[...e.querySelectorAll(":scope > div.section")];for(let e=0;e<t.length;e+=1){const n=t[e];if("loaded"!==n.dataset.sectionStatus){if(n.querySelector('.block[data-block-status="initialized"], .block[data-block-status="loading"]')){n.dataset.sectionStatus="loading";break}n.dataset.sectionStatus="loaded",n.style.display=null}}}function d(e,t){const n=Array.isArray(t)?t:[[t]],o=document.createElement("div");return o.classList.add(e),n.forEach((e=>{const t=document.createElement("div");e.forEach((e=>{const n=document.createElement("div");(e.elems?e.elems:[e]).forEach((e=>{e&&("string"==typeof e?n.innerHTML+=e:n.appendChild(e))})),t.appendChild(n)})),o.appendChild(t)})),o}async function u(e){const o=e.dataset.blockStatus;if("loading"!==o&&"loaded"!==o){e.dataset.blockStatus="loading";const{blockName:o}=e.dataset;try{const a=new Promise((e=>{t(`${window.hlx.codeBasePath}/blocks/${o}/${o}.css`,e)})),c=new Promise((t=>{(async()=>{try{const t=await n(8017)(`${window.hlx.codeBasePath}/blocks/${o}/${o}.js`);t.default&&await t.default(e)}catch(e){console.log(`failed to load module for ${o}`,e)}t()})()}));await Promise.all([a,c])}catch(e){console.log(`failed to load block ${o}`,e)}e.dataset.blockStatus="loaded"}}document.body.style.display="none",function(){window.hlx=window.hlx||{},window.hlx.codeBasePath="",window.hlx.lighthouse="on"===new URLSearchParams(window.location.search).get("lighthouse");const e=document.querySelector('script[src$="/scripts/scripts.js"]');if(e)try{[window.hlx.codeBasePath]=new URL(e.src).pathname.split("/scripts/scripts.js")}catch(e){console.log(e)}}(),e("top"),window.addEventListener("load",(()=>e("load"))),window.addEventListener("unhandledrejection",(t=>{e("error",{source:t.reason.sourceURL,target:t.reason.line})})),window.addEventListener("error",(t=>{e("error",{source:t.filename,target:t.lineno})}));const h=["hero"];function m(e){try{!function(e){const t=e.querySelector("h1"),n=e.querySelector("picture");if(t&&n&&t.compareDocumentPosition(n)&Node.DOCUMENT_POSITION_PRECEDING){const o=document.createElement("div");o.append(d("hero",{elems:[n,t]})),e.prepend(o)}}(e)}catch(e){console.error("Auto Blocking failed",e)}}function f(e){e.querySelectorAll("a").forEach((e=>{if(e.title=e.title||e.textContent,e.href!==e.textContent){const t=e.parentElement,n=e.parentElement.parentElement;e.querySelector("img")||(1!==t.childNodes.length||"P"!==t.tagName&&"DIV"!==t.tagName||(e.className="button primary",t.classList.add("button-container")),1===t.childNodes.length&&"STRONG"===t.tagName&&1===n.childNodes.length&&"P"===n.tagName&&(e.className="button primary",n.classList.add("button-container")),1===t.childNodes.length&&"EM"===t.tagName&&1===n.childNodes.length&&"P"===n.tagName&&(e.className="button secondary",n.classList.add("button-container")))}})),async function(e){let t=document.getElementById("franklin-svg-sprite");if(!t){const e=document.createElement("div");e.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" id="franklin-svg-sprite" style="display: none"></svg>',t=e.firstElementChild,document.body.append(e.firstElementChild)}const n=[...e.querySelectorAll("span.icon")];await Promise.all(n.map((async e=>{const t=Array.from(e.classList).find((e=>e.startsWith("icon-"))).substring(5);if(!s[t]){s[t]=!0;try{const e=await fetch(`${window.hlx.codeBasePath}/icons/${t}.svg`);if(!e.ok)return void(s[t]=!1);const n=await e.text();n.match(/(<style | class=)/)?s[t]={styled:!0,html:n}:s[t]={html:n.replace("<svg",`<symbol id="icons-sprite-${t}"`).replace(/ width=".*?"/,"").replace(/ height=".*?"/,"").replace("</svg>","</symbol>")}}catch(e){s[t]=!1,console.error(e)}}})));const o=Object.values(s).filter((e=>!e.styled)).map((e=>e.html)).join("\n");t.innerHTML+=o,n.forEach((e=>{const t=Array.from(e.classList).find((e=>e.startsWith("icon-"))).split("-")[1],n="A"===e.firstElementChild?.tagName?e.firstElementChild:e;s[t].styled?n.innerHTML=s[t].html:n.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg"><use href="#icons-sprite-${t}"/></svg>`}))}(e),m(e),i(e),function(e){e.querySelectorAll("div.section > div > div").forEach(r)}(e)}async function p(e){document.documentElement.lang="en",function(){const e=(e,t)=>{t.split(",").forEach((t=>{e.classList.add(a(t.trim()))}))},t=o("template");t&&e(document.body,t);const n=o("theme");n&&e(document.body,n)}();const t=e.querySelector("main");t&&(f(t),document.body.classList.add("appear"),await async function(e){const t=document.querySelector(".block");t&&e.includes(t.dataset.blockName)&&await u(t),document.body.style.display=null;const n=document.querySelector("main img");await new Promise((e=>{n&&!n.complete?(n.setAttribute("loading","eager"),n.addEventListener("load",e),n.addEventListener("error",e)):e()}))}(h))}async function y(n){const o=n.querySelector("main");await async function(e){l(e);const t=[...e.querySelectorAll("div.block")];for(let n=0;n<t.length;n+=1)await u(t[n]),l(e)}(o);const{hash:a}=window.location,c=!!a&&n.getElementById(a.substring(1));a&&c&&c.scrollIntoView(),function(e){const t=d("header","");e.append(t),r(t),u(t)}(n.querySelector("header")),function(e){const t=d("footer","");e.append(t),r(t),u(t)}(n.querySelector("footer")),t(`${window.hlx.codeBasePath}/styles/lazy-styles.css`),function(e){const t=document.createElement("link");t.rel="icon",t.type="image/svg+xml",t.href=e;const n=document.querySelector('head link[rel="icon"]');n?n.parentElement.replaceChild(t,n):document.getElementsByTagName("head")[0].appendChild(t)}(`${window.hlx.codeBasePath}/styles/favicon.svg`),e("lazy"),e.observe(o.querySelectorAll("div[data-block-name]")),e.observe(o.querySelectorAll("picture > img"))}window.hlx.RUM_GENERATION="project-1",async function(){await p(document),await y(document)}()}()}();
+import {
+  sampleRUM,
+  buildBlock,
+  loadHeader,
+  loadFooter,
+  decorateButtons,
+  decorateIcons,
+  decorateSections,
+  decorateBlocks,
+  decorateTemplateAndTheme,
+  waitForLCP,
+  loadBlocks,
+  loadCSS,
+} from './lib-franklin.js';
+
+const LCP_BLOCKS = []; // add your LCP blocks to the list
+window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
+
+/**
+ * Builds hero block and prepends to main in a new section.
+ * @param {Element} main The container element
+ */
+function buildHeroBlock(main) {
+  const h1 = main.querySelector('h1');
+  const picture = main.querySelector('picture');
+  // eslint-disable-next-line no-bitwise
+  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+    const section = document.createElement('div');
+    section.append(buildBlock('hero', { elems: [picture, h1] }));
+    main.prepend(section);
+  }
+}
+
+/**
+ * Builds all synthetic blocks in a container element.
+ * @param {Element} main The container element
+ */
+function buildAutoBlocks(main) {
+  try {
+    buildHeroBlock(main);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Auto Blocking failed', error);
+  }
+}
+
+/**
+ * Decorates the main element.
+ * @param {Element} main The main element
+ */
+// eslint-disable-next-line import/prefer-default-export
+export function decorateMain(main) {
+  // hopefully forward compatible button decoration
+  decorateButtons(main);
+  decorateIcons(main);
+  buildAutoBlocks(main);
+  decorateSections(main);
+  decorateBlocks(main);
+}
+
+/**
+ * Loads everything needed to get to LCP.
+ * @param {Element} doc The container element
+ */
+async function loadEager(doc) {
+  document.documentElement.lang = 'en';
+  decorateTemplateAndTheme();
+  const main = doc.querySelector('main');
+  if (main) {
+    decorateMain(main);
+    document.body.classList.add('appear');
+    await waitForLCP(LCP_BLOCKS);
+  }
+}
+
+/**
+ * Adds the favicon.
+ * @param {string} href The favicon URL
+ */
+export function addFavIcon(href) {
+  const link = document.createElement('link');
+  link.rel = 'icon';
+  link.type = 'image/svg+xml';
+  link.href = href;
+  const existingLink = document.querySelector('head link[rel="icon"]');
+  if (existingLink) {
+    existingLink.parentElement.replaceChild(link, existingLink);
+  } else {
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }
+}
+
+/**
+ * Loads everything that doesn't need to be delayed.
+ * @param {Element} doc The container element
+ */
+async function loadLazy(doc) {
+  const main = doc.querySelector('main');
+  await loadBlocks(main);
+
+  const { hash } = window.location;
+  const element = hash ? doc.getElementById(hash.substring(1)) : false;
+  if (hash && element) element.scrollIntoView();
+
+  loadHeader(doc.querySelector('header'));
+  loadFooter(doc.querySelector('footer'));
+
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
+  sampleRUM('lazy');
+  sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
+  sampleRUM.observe(main.querySelectorAll('picture > img'));
+}
+
+/**
+ * Loads everything that happens a lot later,
+ * without impacting the user experience.
+ */
+function loadDelayed() {
+  // eslint-disable-next-line import/no-cycle
+  window.setTimeout(() => import('./delayed.js'), 3000);
+  // load anything that can be postponed to the latest here
+}
+
+async function loadPage() {
+  await loadEager(document);
+  await loadLazy(document);
+  loadDelayed();
+}
+
+loadPage();
