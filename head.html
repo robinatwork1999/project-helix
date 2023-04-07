@@ -1,5 +1,11 @@
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>
+  const script = `console.log('DOM Parsed')`;
+  const _node1 = document.createElement("script");
+  _node1.innerHTML = script;
+  document.body.appendChild(_node1);
+</script>
 <script defer src="/scripts/lib-franklin.js" type="module"></script>
 <script defer src="/scripts/scripts.js" type="module"></script>
-<link rel="stylesheet" href="/styles/styles.css"/>
-<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/styles/styles.css" />
+<link rel="icon" href="data:," />
