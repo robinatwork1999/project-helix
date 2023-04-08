@@ -478,6 +478,8 @@ export function createOptimizedPicture(
       img.setAttribute("loading", eager ? "eager" : "lazy");
       img.setAttribute("alt", alt);
       picture.appendChild(img);
+      img.setAttribute("width", `auto`);
+      img.setAttribute("height", `auto`);
       img.setAttribute("src", `${pathname}?width=${br.width}&format=${ext}&optimize=medium`);
     }
   });
