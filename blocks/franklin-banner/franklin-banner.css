@@ -1,0 +1,32 @@
+.franklin-banner.bg-blue {
+    background-color: var(--bg-blue);
+    color: var(--background-color);
+  }
+  
+  .franklin-banner.bg-blue > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .franklin-banner.bg-blue > div *:first-child {
+    line-height: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .franklin-banner.bg-blue > div {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      gap: 20px;
+      padding: 15px;
+    }
+    .franklin-banner.bg-blue > div :first-child {
+      flex: 0 0 50%;
+    }
+  }
+  

@@ -18,6 +18,9 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #000;
+  --bg-blue: rgb(68, 68, 230);
+  --tablet-breakpoint: 768px;
+  --bg-light-grey: rgb(242 242 242);
 
   /* fonts */
   --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
@@ -240,4 +243,8 @@ main .section {
 /* section metadata */
 main .section.highlight {
   background-color: var(--highlight-background-color);
+}
+
+main .section.bg-grey {
+  background-color: var(--bg-light-grey);
 }
