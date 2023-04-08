@@ -9,7 +9,7 @@ export default function decorate(block) {
         .closest("picture")
         .replaceWith(
           createOptimizedPicture(img.src, img.alt, true, [
-            { width: "320px" },
+            { width: "320" },
             { media: "(min-width: 768px)", width: "750" },
             { media: "(min-width: 1024px)", width: "1000" },
           ])
