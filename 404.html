@@ -31,6 +31,9 @@
   </script>
   <link rel="stylesheet" href="/styles/styles.css">
   <style>
+    body {
+      background-color: yellow;
+    }
     main.error {
       min-height: calc(100vh - var(--nav-height));
       display: flex;
@@ -44,6 +47,11 @@
     main.error .error-number text {
       font-family: var(--fixed-font-family);
     }
+
+    main.error .error-heading {
+      font-size: 50px;
+      font-weight: 800;
+    }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
@@ -52,9 +60,7 @@
   <header></header>
   <main class="error">
     <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
+        <text class="error-heading">Custom 404 Page</text>
       <h2 class="error-message">Page Not Found</h2>
       <p class="button-container">
         <a href="/" class="button secondary error-button-home">Go home</a>
