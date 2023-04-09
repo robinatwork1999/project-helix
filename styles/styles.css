@@ -241,3 +241,21 @@ main .section {
 main .section.highlight {
   background-color: var(--highlight-background-color);
 }
+
+/* Icons Aligment */
+.content__icon {
+  display: flex;
+  gap: 5px;
+}
+
+.button.content__icon .icon {
+  fill: var(--background-color);
+}
+
+a.button.content__icon {
+  display: inline-flex;
+}
+
+.content__icon .icon {
+  align-self: center;
+}
