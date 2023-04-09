@@ -241,3 +241,7 @@ main .section {
 main .section.highlight {
   background-color: var(--highlight-background-color);
 }
+
+main .section.author-text {
+  background-color: rgb(230, 230, 173);
+}
